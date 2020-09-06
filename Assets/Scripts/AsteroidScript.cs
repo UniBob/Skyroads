@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class AsteroidScript : MonoBehaviour
 {
-    [SerializeField] GameManager gm;
-    
+    GameManager gm;
+
+    private void Awake()
+    {
+        gm = FindObjectOfType<GameManager>();   
+    }
+
     private void Update()
     {
-        if (Time.time % 2 ==0)
+        //Wait while ship passed it and destroy itself
+        if (gm.CheckAsteroidCoordinates(transform.position))
         {
-            if (gm.CheckAsteroidCoordinates(transform.position)) Destroy(gameObject);
-        }
+            gm.AddScoreForAsteroid();
+            Destroy(gameObject);
+        }        
     }
 
     private void OnCollisionEnter(Collision collision)
