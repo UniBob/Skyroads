@@ -2719,14 +2719,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bfb8c57eeaed34c9e57337eb97e1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadBorderCoordinates: 3.5
-  spaceShip: {fileID: 1403583977}
-  turnSpeed: 1
-  movementSpeed: 100
   rb: {fileID: 1131042631}
   gm: {fileID: 1967038726}
+  turnSpeed: 1
+  movementSpeed: 100
   normalFieldOfView: 40
   speedFieldOfView: 60
+  roadBorderCoordinates: 3.5
+  spaceShip: {fileID: 1403583977}
 --- !u!4 &1131042630
 Transform:
   m_ObjectHideFlags: 0
@@ -3460,7 +3460,7 @@ GameObject:
   - component: {fileID: 1415417829}
   - component: {fileID: 1415417828}
   m_Layer: 5
-  m_Name: ScoreText (6)
+  m_Name: SessionTimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5040,19 +5040,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16c2b676d918604bbe1957ade8cb5bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceShip: {fileID: 1131042629}
-  shipStartPosition: {x: 0, y: 1.2, z: 0}
-  road: {fileID: 603269467}
   asteroidPrefab: {fileID: 8176653094858447587, guid: 32712fc1240a8624888cdf5baaafe87a,
     type: 3}
   startMenu: {fileID: 396126123}
   pauseMenu: {fileID: 1432891762}
   gameOverMenu: {fileID: 1836992714}
-  sounds: {fileID: 2044487684}
   scoreText: {fileID: 890815103}
+  highScoreText: {fileID: 1556427594}
+  passedAsteroidsText: {fileID: 1321604925}
+  sessionTimeText: {fileID: 1415417828}
   slider: {fileID: 1582062808}
+  spaceShip: {fileID: 1131042629}
+  shipStartPosition: {x: 0, y: 1.2, z: 0}
+  road: {fileID: 603269467}
+  sounds: {fileID: 2044487684}
   openPhrase: "PRESS SPACE TO START \n\nPrevious higscore: "
   gameOverPhrase: 'Your final score '
+  highScoreBited: 
 --- !u!4 &1967038727
 Transform:
   m_ObjectHideFlags: 0
