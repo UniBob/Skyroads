@@ -19,6 +19,7 @@ public class ShipScript : MonoBehaviour
     [Header("Other")]
     [SerializeField] private float roadBorderCoordinates;       //Borders for ship
     [SerializeField] private GameObject spaceShip;              //Link to model
+    [SerializeField] ParticleSystem[] engines;
 
     int lastTileZCoord;                                         //Last road tile coordinate
     bool isMoving;
@@ -44,14 +45,29 @@ public class ShipScript : MonoBehaviour
             {
                 rb.velocity += new Vector3(0, 0, movementSpeed * 2);
                 gm.AddBonusForSpeed(1);
-                if (Camera.main.fieldOfView < speedFieldOfView) Camera.main.fieldOfView += 5;
+                foreach (var engine in engines)
+                {
+                    engine.startLifetime = 2;
+                }
             }
             //Boost off control
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                rb.velocity -= new Vector3(0, 0, movementSpeed * 2);
-                if (Camera.main.fieldOfView > normalFieldOfView) Camera.main.fieldOfView -= 5;
+                rb.velocity -= new Vector3(0, 0, movementSpeed * 2);                
                 gm.AddBonusForSpeed(-1);
+                foreach (var engine in engines)
+                {
+                    engine.startLifetime = 1;
+                }
+            }
+            //Change camera field of view
+            if (Input.GetKey(KeyCode.Space))
+            {
+                if (Camera.main.fieldOfView > speedFieldOfView) Camera.main.fieldOfView -= 5;   
+            }
+            else
+            {
+                if (Camera.main.fieldOfView < normalFieldOfView) Camera.main.fieldOfView += 5;
             }
             //Border control
             if (transform.position.z >= lastTileZCoord)
